@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IoT Sentinel Security Platform Design System */
+
+@layer base {
+  :root {
+    /* Light theme base colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 213 95% 60%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 213 95% 70%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 222 22% 5%;
+    --success: 142 69% 58%;
+    --success-foreground: 222 22% 5%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 213 95% 60%;
+    --radius: 0.75rem;
+
+    /* Custom IoT Colors */
+    --device-online: 142 69% 58%;
+    --device-offline: 0 85% 60%;
+    --device-warning: 43 96% 56%;
+    --anomaly-critical: 0 85% 60%;
+    --anomaly-medium: 43 96% 56%;
+    --anomaly-low: 213 95% 60%;
+
+    /* Gradients - Use proper color values */
+    --gradient-primary: linear-gradient(135deg, hsl(213 95% 60%), hsl(213 95% 70%));
+    --gradient-cyber: linear-gradient(135deg, hsl(213 95% 30%), hsl(213 95% 60%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 85% 40%), hsl(0 85% 60%));
+    --gradient-success: linear-gradient(135deg, hsl(142 69% 40%), hsl(142 69% 58%));
+    
+    /* Shadows & Effects */
+    --shadow-cyber: 0 0 30px hsl(213 95% 60% / 0.3);
+    --shadow-danger: 0 0 20px hsl(0 85% 60% / 0.4);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-glow: 0 0 0 0 hsl(213 95% 60% / 0.7);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Cybersecurity Dark Theme */
+    --background: 222 22% 5%;
+    --foreground: 210 40% 98%;
+    --card: 225 25% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 225 25% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 213 95% 60%;
+    --primary-foreground: 222 22% 5%;
+    --primary-glow: 213 95% 70%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 213 95% 60%;
+    --accent-foreground: 222 22% 5%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 222 22% 5%;
+    --success: 142 69% 58%;
+    --success-foreground: 222 22% 5%;
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 213 95% 60%;
+
+    /* Update shadows for dark theme */
+    --shadow-cyber: 0 0 30px hsl(213 95% 60% / 0.3);
+    --shadow-danger: 0 0 20px hsl(0 85% 60% / 0.4);
+    --shadow-card: 0 4px 20px hsl(222 22% 0% / 0.3);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(213 95% 60% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(213 95% 60% / 0.05) 0%, transparent 50%);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  /* Custom animations */
+  .pulse-cyber {
+    animation: pulse-cyber 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.3), var(--shadow-cyber);
+  }
+  
+  .anomaly-pulse {
+    animation: anomaly-pulse 1.5s ease-in-out infinite;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+  
+  /* Status indicators */
+  .status-online {
+    background: var(--gradient-success);
+    box-shadow: 0 0 10px hsl(var(--device-online) / 0.5);
+  }
+  
+  .status-offline {
+    background: var(--gradient-danger);
+    box-shadow: 0 0 10px hsl(var(--device-offline) / 0.5);
+  }
+  
+  .status-warning {
+    background: linear-gradient(135deg, hsl(var(--warning)), hsl(43 96% 70%));
+    box-shadow: 0 0 10px hsl(var(--warning) / 0.5);
+  }
+}
+
+@keyframes pulse-cyber {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes anomaly-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(var(--destructive) / 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px hsl(var(--destructive) / 0);
+  }
+}
